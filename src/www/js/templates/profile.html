@@ -1,0 +1,55 @@
+<div class="demographics-wrapper">
+  {@contextDump to="console" /}
+
+
+{?data}
+<div class="left">
+<span>{data.firstName}</span>
+<span>{data.lastName}</span>
+</div>
+
+<div class="right logOut">
+  <button class="logoutbtn">logout</button>
+</div>
+
+  <div class="user-image" style="background-image:url({data.pictureUrls.values[0]});">
+  </div>
+
+  <div class="demographics extended-delay">
+    <div>
+      <h2>{data.headline}</h2>
+      <span>Current Position</span>
+    </div>
+    <div>
+      <ul>
+        {#data.positions.values}
+        {@if cond="{$idx}<5"}
+          <li class="skill">{company.name}
+          </li>
+        {/if}
+        {/data.positions.values}
+      </ul>
+    </div>
+    <div>
+      <ul class="right">
+        {#data.skills.values}
+          <li class="skill">{skill.name}</li>
+        {/data.skills.values}
+      </ul>
+      <!-- <span>Skills</span> -->
+    </div>
+    <div>
+      <ul>
+        {#data.educations.values}
+          <li class="education">
+            <h2>{degree}</h2>
+            <p>{schoolName}</p>
+          </li>
+        {/data.educations.values}
+      </ul>
+    <!-- <span>Education</span> -->
+  </div>
+  </div>
+</div>
+
+{/data}
